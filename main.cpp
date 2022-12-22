@@ -5,7 +5,6 @@
 
 using namespace std;
 
-void passwordVerification(void);
 void mainMenu(void);
 
 int main(){
