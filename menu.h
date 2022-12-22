@@ -89,14 +89,14 @@ void adminOption(){
 void addData(){
     system("cls");
     fstream file("data.csv", ios::out | ios::app);
-
-    if (!file){
-        cout << "Data not found." << endl;
-        exit(0);
-    } else {
-        cout << "---------- Add Data ----------" << endl;
-    }
+    ifstream ifile("data.csv");
     string title, publishDate, author, price, isAdd;
+    string line;
+
+    if (!(ifile.peek() == EOF)){
+        file << "\n";
+    }
+    ifile.close();
 
     //input
     cout << "Title: " << endl;
@@ -110,7 +110,7 @@ void addData(){
     getline(cin, price);
 
     //add data into the file.
-    file << "\n" << title << ",";
+    file << title << ",";
     file << publishDate << ",";
     file << author << ",";
     file << price;
@@ -189,6 +189,13 @@ void updateData(){
     string line, content, titleBook, newContent;
     vector<string> info;
     int updateOpt;
+
+    if (!fin){
+        cout << "Data not found." << endl;
+        exit(0);
+    } else {
+        cout << "---------- Add Data ----------" << endl;
+    }
 
     cout << "Enter the title of the book you want to update: " << endl;
     cin.get();
@@ -324,4 +331,3 @@ void mainMenu(){
     }
 
 }
-
