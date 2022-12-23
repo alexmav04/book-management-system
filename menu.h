@@ -192,31 +192,12 @@ void updateData(){
 
     if (!fin){
         cout << "Data not found." << endl;
-        exit(0);
-    } else {
-        cout << "---------- Add Data ----------" << endl;
+        adminOption();
     }
 
     cout << "Enter the title of the book you want to update: " << endl;
     cin.get();
     getline(cin, titleBook);
-    cout << "Enter which one you want to update" << endl;
-    cout << "(1) title/(2) publish date/(3) author/(4) price/(5) Exit: " << endl;
-    cin >> updateOpt;
-
-    while (updateOpt != 1 && updateOpt != 2 && updateOpt != 3 && updateOpt != 4 && updateOpt != 5){
-        cout << "Invalid Option." << endl;
-        cout << "Enter which one you want to update" << endl;
-        cout << "(1) title/(2) publish date/(3) author/(4) price/(5) Exit: " << endl;
-        cin >> updateOpt;
-    }
-    if (updateOpt == 5){
-        system("cls");
-        adminOption();
-    }
-    cout << "Enter information: " << endl;
-    cin.get();
-    getline(cin, newContent);
 
     while (!fin.eof()){
         info.clear();
@@ -238,6 +219,23 @@ void updateData(){
             }
             fout << info[infoSize - 1];
         } else {
+            cout << "Enter which one you want to update" << endl;
+            cout << "(1) title/(2) publish date/(3) author/(4) price/(5) Exit: " << endl;
+            cin >> updateOpt;
+
+            while (updateOpt != 1 && updateOpt != 2 && updateOpt != 3 && updateOpt != 4 && updateOpt != 5){
+                cout << "Invalid Option." << endl;
+                cout << "Enter which one you want to update" << endl;
+                cout << "(1) title/(2) publish date/(3) author/(4) price/(5) Exit: " << endl;
+                cin >> updateOpt;
+            }
+            if (updateOpt == 5){
+                system("cls");
+                adminOption();
+            }
+            cout << "Enter information: " << endl;
+            cin.get();
+            getline(cin, newContent);
             if (!isFirstLine){
                 fout << "\n";
             }
